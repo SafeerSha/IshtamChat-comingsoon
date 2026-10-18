@@ -265,6 +265,74 @@ body.classy-body {
   align-items: center;
 }
 
+/* ─── Highlighted Coming Soon Badge ───────────────────────────────── */
+.coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 1.35rem 0.45rem 1.1rem;
+  border-radius: var(--r-pill);
+  background: linear-gradient(135deg, rgba(122, 24, 53, 0.42) 0%, rgba(216, 178, 140, 0.22) 100%);
+  border: 1.5px solid rgba(216, 178, 140, 0.55);
+  box-shadow: 
+    0 0 25px rgba(122, 24, 53, 0.40),
+    0 4px 16px rgba(216, 178, 140, 0.20),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.coming-soon-badge:hover {
+  transform: translateY(-1px);
+  border-color: var(--champagne);
+  box-shadow: 
+    0 0 35px rgba(122, 24, 53, 0.60),
+    0 6px 20px rgba(216, 178, 140, 0.35);
+}
+
+.pulse-beacon {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beacon-core {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--champagne);
+  box-shadow: 0 0 10px var(--champagne);
+}
+
+.beacon-wave {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--champagne);
+  opacity: 0.8;
+  animation: beaconPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.badge-title {
+  font-family: var(--font-base);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFF5EC;
+  text-shadow: 0 0 12px rgba(216, 178, 140, 0.45);
+}
+
 /* Relationship Intent Pillars (Quiet, Classy Row) */
 .intents-row {
   display: inline-flex;
@@ -277,7 +345,7 @@ body.classy-body {
   border: 1px solid rgba(216, 178, 140, 0.22);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
