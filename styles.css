@@ -269,68 +269,101 @@ body.classy-body {
 .coming-soon-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.45rem 1.35rem 0.45rem 1.1rem;
+  justify-content: center;
+  padding: 0.45rem 1.45rem;
   border-radius: var(--r-pill);
-  background: linear-gradient(135deg, rgba(122, 24, 53, 0.42) 0%, rgba(216, 178, 140, 0.22) 100%);
-  border: 1.5px solid rgba(216, 178, 140, 0.55);
+  background: linear-gradient(135deg, rgba(122, 24, 53, 0.40) 0%, rgba(216, 178, 140, 0.18) 100%);
+  border: 1.5px solid rgba(216, 178, 140, 0.45);
   box-shadow: 
-    0 0 25px rgba(122, 24, 53, 0.40),
-    0 4px 16px rgba(216, 178, 140, 0.20),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    0 0 22px rgba(122, 24, 53, 0.40),
+    0 4px 14px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
   margin-bottom: 1.25rem;
   transition: all 0.3s ease;
   user-select: none;
+  animation: badgeSubtlePulse 4s ease-in-out infinite alternate;
 }
 
 .coming-soon-badge:hover {
   transform: translateY(-1px);
   border-color: var(--champagne);
   box-shadow: 
-    0 0 35px rgba(122, 24, 53, 0.60),
-    0 6px 20px rgba(216, 178, 140, 0.35);
+    0 0 35px rgba(122, 24, 53, 0.65),
+    0 6px 20px rgba(216, 178, 140, 0.4);
 }
 
-.pulse-beacon {
-  position: relative;
-  width: 9px;
-  height: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.beacon-core {
-  position: relative;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--champagne);
-  box-shadow: 0 0 10px var(--champagne);
-}
-
-.beacon-wave {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1.5px solid var(--champagne);
-  opacity: 0.8;
-  animation: beaconPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes beaconPulse {
-  0% { transform: scale(0.8); opacity: 0.9; }
-  100% { transform: scale(2.2); opacity: 0; }
+@keyframes badgeSubtlePulse {
+  0% {
+    border-color: rgba(216, 178, 140, 0.35);
+    box-shadow: 
+      0 0 18px rgba(122, 24, 53, 0.32),
+      0 4px 14px rgba(0, 0, 0, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  }
+  100% {
+    border-color: rgba(216, 178, 140, 0.7);
+    box-shadow: 
+      0 0 30px rgba(122, 24, 53, 0.55),
+      0 0 14px rgba(216, 178, 140, 0.35),
+      0 4px 18px rgba(0, 0, 0, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  }
 }
 
 .badge-title {
   font-family: var(--font-base);
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #FFF5EC;
-  text-shadow: 0 0 12px rgba(216, 178, 140, 0.45);
+  display: inline-block;
+}
+
+/* Glowing text motion: shimmering gold/champagne sweep with breathing radiant drop-shadow */
+.badge-title.glowing-text-motion {
+  background: linear-gradient(
+    105deg,
+    #D8B28C 0%,
+    #FAF3EC 22%,
+    #FFFFFF 42%,
+    #EAD2BA 60%,
+    #C77A8B 80%,
+    #D8B28C 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: textGlowMotion 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes textGlowMotion {
+  0% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 4px rgba(216, 178, 140, 0.45))
+            drop-shadow(0 0 12px rgba(199, 122, 139, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.85))
+            drop-shadow(0 0 20px rgba(216, 178, 140, 0.7))
+            drop-shadow(0 0 32px rgba(122, 24, 53, 0.5));
+  }
+  100% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 6px rgba(216, 178, 140, 0.55))
+            drop-shadow(0 0 14px rgba(199, 122, 139, 0.35));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon-badge,
+  .badge-title.glowing-text-motion {
+    animation: none;
+    -webkit-text-fill-color: var(--champagne-light);
+    color: var(--champagne-light);
+    filter: drop-shadow(0 0 10px rgba(216, 178, 140, 0.4));
+  }
 }
 
 /* Relationship Intent Pillars (Quiet, Classy Row) */
