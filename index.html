@@ -78,11 +78,15 @@
         <div class="card-glow-border" aria-hidden="true"></div>
 
         <div class="vibrant-card" id="main-card">
-          <!-- Top Super-Badge -->
+          <!-- Top Super-Badge with Announcement Bell Icon -->
           <div class="super-badge">
-            <span class="badge-fire" aria-hidden="true">✨</span>
-            <span class="badge-text">Something Extraordinary Is Coming</span>
-            <span class="badge-spark" aria-hidden="true">✦</span>
+            <span class="badge-icon" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </span>
+            <span class="badge-text">Early Access Launch 2026</span>
           </div>
 
           <!-- Bold Vibrant Hero Headline -->
@@ -103,20 +107,6 @@
           <p class="hero-subtext">
             Say goodbye to endless superficial swiping. We're launching an elevated, privacy-first matchmaking haven created for deep compatibility, shared life values, and genuine marriage intentions.
           </p>
-
-          <!-- Social Proof Hype Bar -->
-          <div class="social-proof-bar" aria-label="Social proof">
-            <div class="avatar-stack">
-              <span class="avatar-circle av-1">👩🏻‍💼</span>
-              <span class="avatar-circle av-2">👨🏽‍💻</span>
-              <span class="avatar-circle av-3">👩🏽‍🎨</span>
-              <span class="avatar-circle av-4">👨🏻‍🔬</span>
-              <span class="avatar-count">+1.4k</span>
-            </div>
-            <p class="social-proof-text">
-              <strong>1,480+ singles & families</strong> have joined the priority invite list
-            </p>
-          </div>
 
           <!-- Form Area -->
           <div class="form-zone" id="form-zone">
@@ -154,9 +144,12 @@
               <!-- Error notification -->
               <div id="email-error" class="form-feedback form-feedback--error" role="alert" hidden></div>
 
-              <!-- Trust Guarantee -->
+              <!-- Trust Guarantee with Security Lock SVG -->
               <div class="trust-guarantee">
-                <span class="trust-icon" aria-hidden="true">🔒</span>
+                <svg class="trust-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
                 <span>Strictly confidential. No spam, ever. Unsubscribe anytime.</span>
               </div>
             </form>
@@ -169,12 +162,18 @@
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <h2 class="success-heading">You're On The VIP List! 🎉</h2>
+              <h2 class="success-heading">You're On The VIP List!</h2>
               <p class="success-body">
                 We've reserved your early access spot for <span id="confirmed-email" class="highlight-email"></span>. You'll be among the very first invited when doors open.
               </p>
               <div class="vip-tag-wrapper">
-                <span class="vip-tag">✦ Priority Invitation Confirmed</span>
+                <span class="vip-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                  <span>Priority Invitation Confirmed</span>
+                </span>
               </div>
               <button type="button" id="reset-btn" class="reset-link">
                 Register another email address
@@ -182,29 +181,44 @@
             </div>
           </div>
 
-          <!-- Vibrant Feature Badges -->
+          <!-- Useful Feature Badges (Professional Clean SVGs) -->
           <div class="vibrant-feature-grid" aria-label="Why choose IshtamChat">
             <div class="feature-capsule feature-capsule--ruby">
-              <span class="feat-icon">🛡️</span>
+              <div class="feat-svg-box feat-svg-box--ruby" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
               <div class="feat-details">
-                <strong>100% Verified</strong>
-                <span>Government ID Checked</span>
+                <strong>100% Verified Profiles</strong>
+                <span>Government ID & Mobile Authenticated</span>
               </div>
             </div>
 
             <div class="feature-capsule feature-capsule--gold">
-              <span class="feat-icon">💫</span>
+              <div class="feat-svg-box feat-svg-box--gold" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
               <div class="feat-details">
-                <strong>Compatibility</strong>
-                <span>Deep Family & Life Values</span>
+                <strong>Curated Compatibility</strong>
+                <span>Shared Values, Goals & Lifestyle</span>
               </div>
             </div>
 
             <div class="feature-capsule feature-capsule--magenta">
-              <span class="feat-icon">🔐</span>
+              <div class="feat-svg-box feat-svg-box--magenta" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  <circle cx="12" cy="16" r="1.5"/>
+                </svg>
+              </div>
               <div class="feat-details">
-                <strong>Absolute Privacy</strong>
-                <span>You Control Who Sees You</span>
+                <strong>Absolute Privacy Controls</strong>
+                <span>You Control Who Sees Your Photos</span>
               </div>
             </div>
           </div>

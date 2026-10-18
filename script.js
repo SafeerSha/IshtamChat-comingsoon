@@ -186,33 +186,18 @@
 
     function createAmbientParticle(randomY) {
       var colorObj = VIBRANT_PALETTE[Math.floor(Math.random() * VIBRANT_PALETTE.length)];
-      var isHeart = Math.random() > 0.72; // ~28% floating micro-hearts
 
       return {
         x: Math.random() * canvas.width,
         y: randomY ? Math.random() * canvas.height : canvas.height + 15,
-        size: isHeart ? Math.random() * 8 + 6 : Math.random() * 3 + 1.2,
-        isHeart: isHeart,
+        size: Math.random() * 3.5 + 1.5,
         color: colorObj,
         alpha: Math.random() * 0.65 + 0.25,
-        speedY: Math.random() * 0.5 + 0.2,
-        speedX: (Math.random() - 0.5) * 0.35,
-        rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.03,
+        speedY: Math.random() * 0.45 + 0.18,
+        speedX: (Math.random() - 0.5) * 0.25,
         pulseSpeed: Math.random() * 0.015 + 0.005,
         pulseDir: Math.random() > 0.5 ? 1 : -1
       };
-    }
-
-    function drawMiniHeart(x, y, size) {
-      ctx.beginPath();
-      var top = size * 0.3;
-      ctx.moveTo(x, y + top);
-      ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + top);
-      ctx.bezierCurveTo(x - size / 2, y + (size + top) / 2, x, y + (size + top) / 1.5, x, y + size);
-      ctx.bezierCurveTo(x, y + (size + top) / 1.5, x + size / 2, y + (size + top) / 2, x + size / 2, y + top);
-      ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + top);
-      ctx.closePath();
     }
 
     // Mouse movement adds dynamic romantic sparkles
@@ -271,20 +256,12 @@
         var colStr = "rgba(" + p.color.r + "," + p.color.g + "," + p.color.b + ",";
 
         ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.shadowColor = colStr + "0.8)";
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8;
         ctx.fillStyle = colStr + p.alpha + ")";
-
-        if (p.isHeart) {
-          drawMiniHeart(0, -p.size / 2, p.size);
-          ctx.fill();
-        } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
+        ctx.fill();
         ctx.restore();
       }
 
