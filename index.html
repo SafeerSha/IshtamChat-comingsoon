@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>IshtamChat — Coming Soon | Meaningful connections, thoughtfully made</title>
+  <meta name="description" content="IshtamChat is a modern, privacy-first matrimony and relationship discovery experience. Sign up for early access — launching soon." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IshtamChat — Coming Soon" />
+  <meta property="og:description" content="A modern, privacy-first matrimony experience — designed around compatibility, not endless swiping." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ishtamchat.com" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>" />
+</head>
+<body>
+  <div class="cs-root" id="coming-soon-root">
+    <!-- Animated gradient background -->
+    <div class="cs-gradient"></div>
+
+    <!-- Floating glow orbs for depth -->
+    <div class="cs-orb cs-orb--1" aria-hidden="true"></div>
+    <div class="cs-orb cs-orb--2" aria-hidden="true"></div>
+    <div class="cs-orb cs-orb--3" aria-hidden="true"></div>
+
+    <!-- Interactive heart particles canvas -->
+    <canvas id="heart-canvas" class="cs-canvas" aria-hidden="true"></canvas>
+
+    <!-- Main content -->
+    <main class="cs-content">
+
+      <!-- Brand section -->
+      <div class="cs-brand">
+        <div class="cs-badge">
+          <span class="cs-badge__dot" aria-hidden="true"></span>
+          Something beautiful is on its way
+        </div>
+
+        <h1 class="cs-logo">
+          <span class="cs-logo__ishtam">Ishtam</span><span class="cs-logo__chat">Chat</span>
+        </h1>
+
+        <div class="cs-tagline-wrap" aria-live="polite">
+          <p class="cs-tagline">
+            <span id="typewriter-text"></span><span class="cs-cursor" aria-hidden="true">|</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Announcement -->
+      <div class="cs-announce">
+        <h2 class="cs-heading">Coming Soon</h2>
+        <p class="cs-subtext">
+          A modern, privacy-first matrimony experience — designed around
+          compatibility, not endless swiping. Be the first to know when we launch.
+        </p>
+      </div>
+
+      <!-- Email signup form -->
+      <div id="signup-section">
+        <form id="signup-form" class="cs-form" novalidate>
+          <div class="cs-input-group">
+            <input
+              type="email"
+              id="email-input"
+              class="cs-input"
+              placeholder="Enter your email for early access"
+              autocomplete="email"
+              aria-label="Email address for early access notification"
+              required
+            />
+            <button type="submit" class="cs-btn" id="notify-btn">
+              Notify me
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+          <p id="email-error" class="cs-error" role="alert" hidden></p>
+          <p class="cs-privacy-note">We respect your privacy. No spam, ever.</p>
+        </form>
+
+        <!-- Success state (hidden by default) -->
+        <div id="signup-success" class="cs-success" hidden>
+          <div class="cs-success__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </div>
+          <p class="cs-success__title">You're on the list!</p>
+          <p class="cs-success__sub">
+            We'll notify <strong id="confirmed-email"></strong> as soon as IshtamChat goes live.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="cs-footer">
+        <a href="mailto:care@ishtamchat.com" class="cs-footer__link" aria-label="Email us">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          care@ishtamchat.com
+        </a>
+        <span class="cs-footer__dot" aria-hidden="true">·</span>
+        <span class="cs-footer__copy">&copy; 2026 IshtamChat</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
