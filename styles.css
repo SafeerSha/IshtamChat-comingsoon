@@ -428,6 +428,56 @@ body {
   to { background-position: 200% center; }
 }
 
+/* ─── Intent Pillar Chips (Marriage · Living Together · Friendship) ── */
+.intent-pill-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1.35rem;
+  transition: all 0.3s ease;
+}
+
+.intent-pill-group:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 42, 95, 0.35);
+  box-shadow: 0 6px 22px rgba(255, 42, 95, 0.2);
+}
+
+.intent-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFF0F4;
+  letter-spacing: 0.01em;
+  user-select: none;
+}
+
+.intent-pill svg {
+  color: #FFB020;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.intent-pill:hover svg {
+  transform: scale(1.15);
+}
+
+.intent-pill-dot {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+}
+
 /* Typewriter Subtitle */
 .tagline-container {
   min-height: 2.2rem;

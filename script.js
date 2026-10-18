@@ -13,11 +13,11 @@
 
   /* ─── 1. Typewriter Tagline Rotator ────────────────────────────── */
   var taglines = [
-    "Where hearts find their true home…",
-    "Deep compatibility, crafted for forever.",
-    "Meaningful marriages begin with genuine trust.",
-    "No swiping. Pure intention & verified souls.",
-    "Your next chapter of love begins right here."
+    "Whether marriage, living together, or genuine friendship…",
+    "Find someone who truly aligns with what you seek.",
+    "Meaningful compatibility, zero superficial swiping.",
+    "Deep connections rooted in shared values & mutual trust.",
+    "Your story begins with authentic intentions."
   ];
 
   var typewriterEl = document.getElementById("typewriter-text");
