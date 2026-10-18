@@ -143,7 +143,7 @@
     submitBtn.disabled = true;
     var btnText = submitBtn.querySelector(".btn-text");
     var originalText = btnText.textContent;
-    btnText.textContent = "Reserving Spot...";
+    btnText.textContent = "Submitting...";
 
     setTimeout(function () {
       confirmedEmailEl.textContent = email;
