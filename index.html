@@ -9,7 +9,7 @@
   <meta name="title" content="IshtamChat — Meaningful Connections | Marriage, Friendship & Living Together" />
   <meta name="description" content="Discover meaningful connections tailored to what you seek — marriage, living together, or genuine friendship. Privacy-first, compatibility-driven discovery. Request early access today." />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#18040C" />
+  <meta name="theme-color" content="#120309" />
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website" />
@@ -26,10 +26,10 @@
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💫</text></svg>" />
 </head>
-<body class="theme-vibrant">
-  <!-- Glowing Aurora Gradient Canvas Background -->
+<body class="open-layout-body">
+  <!-- Dynamic Ambient Aurora Lighting Background -->
   <div class="aurora-backdrop" aria-hidden="true">
     <div class="aurora-orb aurora-orb--ruby"></div>
     <div class="aurora-orb aurora-orb--amber"></div>
@@ -38,21 +38,21 @@
     <div class="aurora-mesh-grid"></div>
   </div>
 
-  <!-- Interactive Floating Magical Sparkles Canvas -->
+  <!-- Ambient Light Bokeh Canvas -->
   <canvas id="sparkle-canvas" class="sparkle-canvas" aria-hidden="true"></canvas>
 
-  <div class="app-container">
-    <!-- Header Navigation -->
+  <div class="open-canvas-container">
+    <!-- Top Navigation Bar -->
     <header class="app-nav">
       <div class="brand-group">
-        <div class="brand-logo-pill">
+        <a href="/" class="brand-logo-pill" aria-label="IshtamChat Home">
           <span class="brand-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="url(#brandGrad)">
               <defs>
                 <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#FF3366" />
+                  <stop offset="0%" stop-color="#FF2A5F" />
                   <stop offset="50%" stop-color="#FF758C" />
-                  <stop offset="100%" stop-color="#FFD166" />
+                  <stop offset="100%" stop-color="#FFB020" />
                 </linearGradient>
               </defs>
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -61,202 +61,200 @@
           <span class="brand-title">
             <span class="brand-title__ishtam">Ishtam</span><span class="brand-title__chat">Chat</span>
           </span>
-        </div>
+        </a>
       </div>
 
-      <!-- Live VIP Counter / Hype Badge -->
+      <!-- Live Launch Badge -->
       <div class="status-live-badge">
         <span class="live-dot" aria-hidden="true"></span>
-        <span class="live-label">Launching Early Access 2026</span>
+        <span class="live-label">Opening Early Access 2026</span>
       </div>
     </header>
 
-    <!-- Main Hero Stage -->
-    <main class="hero-stage">
-      <div class="vibrant-card-wrapper" id="card-wrapper">
-        <!-- Animated Gradient Border Glow -->
-        <div class="card-glow-border" aria-hidden="true"></div>
+    <!-- Open Hero Section (No Box, No Card — Pure Immersive Canvas) -->
+    <main class="open-hero">
+      <!-- Announcement Notification Pill -->
+      <div class="announcement-pill">
+        <span class="announcement-icon" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </span>
+        <span class="announcement-text">A New Way to Discover Real Relationships</span>
+      </div>
 
-        <div class="vibrant-card" id="main-card">
-          <!-- Top Super-Badge with Announcement Bell Icon -->
-          <div class="super-badge">
-            <span class="badge-icon" aria-hidden="true">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+      <!-- Giant Open Editorial Headline -->
+      <h1 class="open-hero-title">
+        Meaningful Bonds, <br />
+        <span class="vibrant-shimmer-text">Tailored To Your Intent.</span>
+      </h1>
+
+      <!-- Interactive 3-Pillar Intent Switcher (Marriage · Living Together · Friendship) -->
+      <div class="intent-switcher" role="tablist" aria-label="Select your relationship intent">
+        <button type="button" class="intent-tab active" data-intent="all" role="tab" aria-selected="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>All Intents</span>
+        </button>
+
+        <button type="button" class="intent-tab" data-intent="marriage" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="12" r="5.5"/>
+            <circle cx="15" cy="12" r="5.5"/>
+          </svg>
+          <span>Marriage</span>
+        </button>
+
+        <button type="button" class="intent-tab" data-intent="living" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span>Living Together</span>
+        </button>
+
+        <button type="button" class="intent-tab" data-intent="friendship" role="tab" aria-selected="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Friendship</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Tagline Typewriter -->
+      <div class="open-tagline-wrap" aria-live="polite">
+        <p class="open-tagline" id="tagline-display">
+          <span id="typewriter-text">Whether marriage, living together, or genuine friendship…</span>
+          <span class="typewriter-cursor" aria-hidden="true"></span>
+        </p>
+      </div>
+
+      <!-- Description -->
+      <p class="open-hero-subtext">
+        Say goodbye to endless superficial swiping. IshtamChat is an elevated, privacy-first sanctuary designed for intentional connection — whether you're seeking lifelong marriage, a live-in partner, or genuine friendship built on mutual understanding.
+      </p>
+
+      <!-- Floating Email Invitation Capsule -->
+      <div class="open-form-container" id="form-container">
+        <form id="waitlist-form" class="open-pill-form" novalidate>
+          <div class="open-input-capsule">
+            <span class="capsule-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
               </svg>
             </span>
-            <span class="badge-text">Early Access Launch 2026</span>
+
+            <input
+              type="email"
+              id="email-input"
+              class="capsule-input"
+              placeholder="Enter your email to request priority access..."
+              autocomplete="email"
+              aria-label="Email address for early access priority"
+              required
+            />
+
+            <button type="submit" class="capsule-submit-btn" id="submit-btn">
+              <span class="btn-shimmer" aria-hidden="true"></span>
+              <span class="btn-content">
+                <span class="btn-text">Request Priority Access</span>
+                <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </button>
           </div>
 
-          <!-- Bold Vibrant Hero Headline -->
-          <h1 class="hero-title">
-            Meaningful Bonds, <br />
-            <span class="vibrant-shimmer-text">Tailored To Your Intent.</span>
-          </h1>
+          <!-- Error notice -->
+          <div id="email-error" class="form-feedback form-feedback--error" role="alert" hidden></div>
 
-          <!-- Intent Pillars: Marriage · Living Together · Friendship -->
-          <div class="intent-pill-group" aria-label="Connection preferences">
-            <span class="intent-pill">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="9" cy="12" r="6"/>
-                <circle cx="15" cy="12" r="6"/>
-              </svg>
-              <span>Marriage</span>
-            </span>
-            <span class="intent-pill-dot" aria-hidden="true">•</span>
-            <span class="intent-pill">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
-              <span>Living Together</span>
-            </span>
-            <span class="intent-pill-dot" aria-hidden="true">•</span>
-            <span class="intent-pill">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-              <span>Friendship</span>
-            </span>
+          <!-- Privacy statement -->
+          <div class="open-trust-note">
+            <svg class="trust-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>Strictly confidential. No spam, ever. Unsubscribe with one click.</span>
           </div>
+        </form>
 
-          <!-- Typewriter Rotating Tagline -->
-          <div class="tagline-container" aria-live="polite">
-            <p class="tagline-phrase">
-              <span id="typewriter-text">Whether marriage, living together, or genuine friendship…</span>
-              <span class="typewriter-cursor" aria-hidden="true"></span>
-            </p>
+        <!-- Success Reveal Banner (Seamless Inline Transition) -->
+        <div id="signup-success" class="open-success-panel" hidden>
+          <div class="success-ring-wrap" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
           </div>
-
-          <!-- Emotional Description -->
-          <p class="hero-subtext">
-            Say goodbye to endless superficial swiping. IshtamChat is an elevated, privacy-first sanctuary designed for intentional connections — whether you're looking for lifelong marriage, a live-in partner, or genuine friendship built on mutual understanding.
+          <h2 class="success-heading">You're On The Priority List!</h2>
+          <p class="success-body">
+            We've reserved an early invitation for <span id="confirmed-email" class="highlight-email"></span>. You'll be notified the moment our doors open.
           </p>
-
-          <!-- Form Area -->
-          <div class="form-zone" id="form-zone">
-            <form id="waitlist-form" class="vibrant-pill-form" novalidate>
-              <div class="pill-input-box">
-                <span class="pill-icon" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2"/>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                  </svg>
-                </span>
-
-                <input
-                  type="email"
-                  id="email-input"
-                  class="pill-input"
-                  placeholder="Enter your email for VIP early access..."
-                  autocomplete="email"
-                  aria-label="Enter your email to request VIP early access"
-                  required
-                />
-
-                <button type="submit" class="pill-submit-btn" id="submit-btn">
-                  <span class="btn-shimmer" aria-hidden="true"></span>
-                  <span class="btn-content">
-                    <span class="btn-text">Get VIP Access</span>
-                    <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-
-              <!-- Error notification -->
-              <div id="email-error" class="form-feedback form-feedback--error" role="alert" hidden></div>
-
-              <!-- Trust Guarantee with Security Lock SVG -->
-              <div class="trust-guarantee">
-                <svg class="trust-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                </svg>
-                <span>Strictly confidential. No spam, ever. Unsubscribe anytime.</span>
-              </div>
-            </form>
-
-            <!-- Success State -->
-            <div id="signup-success" class="vibrant-success-card" hidden>
-              <div class="celebration-ring" aria-hidden="true">
-                <div class="ring-pulse"></div>
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <h2 class="success-heading">You're On The VIP List!</h2>
-              <p class="success-body">
-                We've reserved your early access spot for <span id="confirmed-email" class="highlight-email"></span>. You'll be among the very first invited when doors open.
-              </p>
-              <div class="vip-tag-wrapper">
-                <span class="vip-tag">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <path d="m9 12 2 2 4-4"/>
-                  </svg>
-                  <span>Priority Invitation Confirmed</span>
-                </span>
-              </div>
-              <button type="button" id="reset-btn" class="reset-link">
-                Register another email address
-              </button>
-            </div>
+          <div class="vip-tag-wrapper">
+            <span class="vip-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              <span>Priority Invitation Confirmed</span>
+            </span>
           </div>
+          <button type="button" id="reset-btn" class="reset-link">
+            Register another email address
+          </button>
+        </div>
+      </div>
 
-          <!-- Useful Feature Badges (Professional Clean SVGs) -->
-          <div class="vibrant-feature-grid" aria-label="Why choose IshtamChat">
-            <div class="feature-capsule feature-capsule--ruby">
-              <div class="feat-svg-box feat-svg-box--ruby" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="m9 12 2 2 4-4"/>
-                </svg>
-              </div>
-              <div class="feat-details">
-                <strong>100% Verified Profiles</strong>
-                <span>Government ID & Mobile Authenticated</span>
-              </div>
-            </div>
-
-            <div class="feature-capsule feature-capsule--gold">
-              <div class="feat-svg-box feat-svg-box--gold" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-              </div>
-              <div class="feat-details">
-                <strong>Match by Your Intent</strong>
-                <span>Filtered for Marriage, Living Together, or Friendship</span>
-              </div>
-            </div>
-
-            <div class="feature-capsule feature-capsule--magenta">
-              <div class="feat-svg-box feat-svg-box--magenta" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                  <circle cx="12" cy="16" r="1.5"/>
-                </svg>
-              </div>
-              <div class="feat-details">
-                <strong>Absolute Privacy Controls</strong>
-                <span>You Control Who Sees Your Photos</span>
-              </div>
-            </div>
+      <!-- 3 Open Feature Pillars Across the Canvas -->
+      <div class="open-pillars-grid" aria-label="Key highlights">
+        <div class="pillar-item">
+          <div class="pillar-icon-box pillar-icon-box--ruby" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
           </div>
+          <div class="pillar-text">
+            <h3>100% Verified Members</h3>
+            <p>Government ID & phone checked for genuine, authentic profiles.</p>
+          </div>
+        </div>
 
+        <div class="pillar-item">
+          <div class="pillar-icon-box pillar-icon-box--gold" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <div class="pillar-text">
+            <h3>Match by Your Intent</h3>
+            <p>Zero guessing. Clearly discover people seeking marriage, living together, or friendship.</p>
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="pillar-icon-box pillar-icon-box--magenta" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <circle cx="12" cy="16" r="1.5"/>
+            </svg>
+          </div>
+          <div class="pillar-text">
+            <h3>Absolute Privacy Controls</h3>
+            <p>You have full sovereignty over who views your photos, profile, and contact details.</p>
+          </div>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Bottom Footer -->
     <footer class="app-footer">
       <div class="footer-inner">
         <a href="mailto:care@ishtamchat.com" class="footer-email">
@@ -267,7 +265,7 @@
           care@ishtamchat.com
         </a>
         <span class="footer-dot" aria-hidden="true">•</span>
-        <span class="footer-copy">&copy; 2026 IshtamChat. Crafted with love & intention.</span>
+        <span class="footer-copy">&copy; 2026 IshtamChat. Marriage · Living Together · Friendship</span>
       </div>
     </footer>
   </div>

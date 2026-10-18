@@ -1,46 +1,72 @@
 /**
  * ISHTAMCHAT — COMING SOON PAGE
- * Interactive Vibrant Features:
- * 1. Multi-color Glowing Sparkles & Heart particles on Canvas
- * 2. Mouse cursor trailing particle bursts
- * 3. Typewriter rotator with romantic matrimonial phrases
- * 4. Form validation, VIP reserving animation & colorful confetti burst
- * 5. Smooth card 3D tilt responsiveness
+ * Open-Canvas Interactive Features:
+ * 1. Multi-intent pillar tab switcher (Marriage, Living Together, Friendship)
+ * 2. Typewriter rotator responding dynamically to selected intent
+ * 3. VIP Early access form handling & multi-colored celebration confetti
+ * 4. Ambient light bokeh canvas particles + gentle mouse spark trail
  */
 
 (function () {
   "use strict";
 
-  /* ─── 1. Typewriter Tagline Rotator ────────────────────────────── */
-  var taglines = [
-    "Whether marriage, living together, or genuine friendship…",
-    "Find someone who truly aligns with what you seek.",
-    "Meaningful compatibility, zero superficial swiping.",
-    "Deep connections rooted in shared values & mutual trust.",
-    "Your story begins with authentic intentions."
-  ];
+  /* ─── 1. Intent Switcher & Dynamic Taglines ──────────────────────── */
+  var INTENT_TAGLINES = {
+    all: [
+      "Whether marriage, living together, or genuine friendship…",
+      "Find someone who truly aligns with what you seek.",
+      "Meaningful compatibility, zero superficial swiping.",
+      "Deep connections rooted in shared values & mutual trust.",
+      "Your story begins with authentic intentions."
+    ],
+    marriage: [
+      "Finding a lifelong companion built on mutual values & trust.",
+      "Thoughtful matchmaking designed for marriage intentions.",
+      "Where two families and two hearts connect with purpose.",
+      "Verified profiles with genuine lifelong intentions."
+    ],
+    living: [
+      "Discover someone compatible to share your life and home with.",
+      "Co-living & companionship based on real lifestyle harmony.",
+      "Explore shared futures with honesty, trust, and openness.",
+      "Designed for modern couples looking to build together."
+    ],
+    friendship: [
+      "Connect with kindred spirits and build genuine friendships.",
+      "Deep conversations and real bonds beyond casual swiping.",
+      "Find friends who share your passions, values, and humor.",
+      "Authentic connections that enrich your everyday life."
+    ]
+  };
 
+  var currentIntent = "all";
+  var taglines = INTENT_TAGLINES[currentIntent];
   var typewriterEl = document.getElementById("typewriter-text");
   var taglineIdx = 0;
   var charIdx = 0;
   var isDeleting = false;
-  var typeSpeed = 50;
+  var typeTimer = null;
+  var typeSpeed = 48;
 
   function typeLoop() {
     var currentPhrase = taglines[taglineIdx];
+    if (!currentPhrase) {
+      taglineIdx = 0;
+      currentPhrase = taglines[0];
+    }
 
     if (!isDeleting) {
       charIdx++;
       typewriterEl.textContent = currentPhrase.substring(0, charIdx);
 
       if (charIdx >= currentPhrase.length) {
-        setTimeout(function () {
+        typeTimer = setTimeout(function () {
           isDeleting = true;
           typeLoop();
         }, 2800);
         return;
       }
-      setTimeout(typeLoop, typeSpeed + Math.random() * 20);
+      typeTimer = setTimeout(typeLoop, typeSpeed + Math.random() * 20);
     } else {
       charIdx--;
       typewriterEl.textContent = currentPhrase.substring(0, charIdx);
@@ -48,20 +74,47 @@
       if (charIdx <= 0) {
         isDeleting = false;
         taglineIdx = (taglineIdx + 1) % taglines.length;
-        setTimeout(typeLoop, 450);
+        typeTimer = setTimeout(typeLoop, 450);
         return;
       }
-      setTimeout(typeLoop, 22);
+      typeTimer = setTimeout(typeLoop, 22);
     }
   }
 
-  setTimeout(typeLoop, 900);
+  typeTimer = setTimeout(typeLoop, 800);
+
+  // Intent Switcher Tabs Click Handler
+  var intentTabs = document.querySelectorAll(".intent-tab");
+  intentTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      intentTabs.forEach(function (t) {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      var selectedIntent = tab.getAttribute("data-intent");
+      if (selectedIntent && INTENT_TAGLINES[selectedIntent]) {
+        currentIntent = selectedIntent;
+        taglines = INTENT_TAGLINES[currentIntent];
+
+        // Reset typewriter to new intent immediately
+        clearTimeout(typeTimer);
+        isDeleting = false;
+        charIdx = 0;
+        taglineIdx = 0;
+        typewriterEl.textContent = "";
+        typeLoop();
+      }
+    });
+  });
 
   /* ─── 2. Email VIP Form & Submission ───────────────────────────── */
   var form = document.getElementById("waitlist-form");
   var emailInput = document.getElementById("email-input");
   var errorEl = document.getElementById("email-error");
-  var successCard = document.getElementById("signup-success");
+  var successPanel = document.getElementById("signup-success");
   var confirmedEmailEl = document.getElementById("confirmed-email");
   var resetBtn = document.getElementById("reset-btn");
   var submitBtn = document.getElementById("submit-btn");
@@ -86,23 +139,23 @@
       return;
     }
 
-    // Interactive button state
+    // Button loading animation
     submitBtn.disabled = true;
     var btnText = submitBtn.querySelector(".btn-text");
     var originalText = btnText.textContent;
-    btnText.textContent = "Securing Spot...";
+    btnText.textContent = "Reserving Spot...";
 
     setTimeout(function () {
       confirmedEmailEl.textContent = email;
       form.hidden = true;
-      successCard.hidden = false;
+      successPanel.hidden = false;
 
       submitBtn.disabled = false;
       btnText.textContent = originalText;
 
-      // Launch vibrant confetti explosion
+      // Launch celebration fireworks
       launchCelebration();
-    }, 500);
+    }, 450);
   });
 
   emailInput.addEventListener("input", function () {
@@ -112,7 +165,7 @@
   });
 
   resetBtn.addEventListener("click", function () {
-    successCard.hidden = true;
+    successPanel.hidden = true;
     form.hidden = false;
     emailInput.value = "";
     clearError();
@@ -129,31 +182,7 @@
     errorEl.textContent = "";
   }
 
-  /* ─── 3. 3D Card Interactive Tilt ───────────────────────────────── */
-  var card = document.getElementById("main-card");
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-  if (card && !isTouch && window.innerWidth > 992) {
-    document.addEventListener("mousemove", function (e) {
-      var rect = card.getBoundingClientRect();
-      var cx = rect.left + rect.width / 2;
-      var cy = rect.top + rect.height / 2;
-
-      var dx = (e.clientX - cx) / (window.innerWidth / 2);
-      var dy = (e.clientY - cy) / (window.innerHeight / 2);
-
-      var rotX = dy * -3.8;
-      var rotY = dx * 3.8;
-
-      card.style.transform = "perspective(1200px) rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg)";
-    });
-
-    document.addEventListener("mouseleave", function () {
-      card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg)";
-    });
-  }
-
-  /* ─── 4. Vibrant Magical Canvas Sparkles & Heart Embers ─────────── */
+  /* ─── 3. Ambient Bokeh Particle Canvas ─────────────────────────── */
   var canvas = document.getElementById("sparkle-canvas");
   if (canvas) {
     var ctx = canvas.getContext("2d");
@@ -178,7 +207,7 @@
 
     function initBackgroundParticles() {
       particles = [];
-      var count = Math.min(Math.floor((canvas.width * canvas.height) / 22000), 55);
+      var count = Math.min(Math.floor((canvas.width * canvas.height) / 24000), 50);
       for (var i = 0; i < count; i++) {
         particles.push(createAmbientParticle(true));
       }
@@ -200,25 +229,24 @@
       };
     }
 
-    // Mouse movement adds dynamic romantic sparkles
+    // Gentle cursor trail
     window.addEventListener("pointermove", function (e) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
 
       if (mouse.prevX !== -1) {
         var dist = Math.hypot(mouse.x - mouse.prevX, mouse.y - mouse.prevY);
-        if (dist > 8 && trailParticles.length < 40) {
+        if (dist > 10 && trailParticles.length < 35) {
           var col = VIBRANT_PALETTE[Math.floor(Math.random() * VIBRANT_PALETTE.length)];
           trailParticles.push({
-            x: mouse.x + (Math.random() - 0.5) * 12,
-            y: mouse.y + (Math.random() - 0.5) * 12,
-            size: Math.random() * 4 + 2,
+            x: mouse.x + (Math.random() - 0.5) * 10,
+            y: mouse.y + (Math.random() - 0.5) * 10,
+            size: Math.random() * 3.5 + 1.5,
             color: col,
-            alpha: 1,
-            vx: (Math.random() - 0.5) * 1.5,
-            vy: Math.random() * -1.5 - 0.5,
-            life: 1,
-            decay: Math.random() * 0.03 + 0.02
+            alpha: 0.9,
+            vx: (Math.random() - 0.5) * 1.2,
+            vy: Math.random() * -1.2 - 0.4,
+            decay: Math.random() * 0.035 + 0.025
           });
         }
       }
@@ -236,7 +264,7 @@
     function renderCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Render Ambient Floating Glow Particles & Hearts
+      // Render Ambient Bokeh Circles
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
 
@@ -246,7 +274,6 @@
 
         p.y -= p.speedY;
         p.x += p.speedX;
-        p.rotation += p.rotSpeed;
 
         if (p.y < -20 || p.x < -20 || p.x > canvas.width + 20) {
           particles[i] = createAmbientParticle(false);
@@ -265,7 +292,7 @@
         ctx.restore();
       }
 
-      // Render Mouse Trail Sparkles
+      // Render Mouse Trail
       for (var t = trailParticles.length - 1; t >= 0; t--) {
         var tp = trailParticles[t];
         tp.x += tp.vx;
@@ -282,7 +309,7 @@
         ctx.arc(tp.x, tp.y, tp.size, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(" + tp.color.r + "," + tp.color.g + "," + tp.color.b + "," + tp.alpha + ")";
         ctx.shadowColor = "rgba(" + tp.color.r + "," + tp.color.g + "," + tp.color.b + ", 0.9)";
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 10;
         ctx.fill();
         ctx.restore();
       }
@@ -295,7 +322,7 @@
     requestAnimationFrame(renderCanvas);
   }
 
-  /* ─── 5. Colorful Confetti Celebration Fireworks ───────────────── */
+  /* ─── 4. Celebration Confetti Explosion ────────────────────────── */
   function launchCelebration() {
     if (!canvas || !ctx) return;
     var burstCount = 50;
@@ -326,7 +353,7 @@
         var f = fireworks[j];
         f.x += f.vx;
         f.y += f.vy;
-        f.vy += 0.12; // gentle gravity
+        f.vy += 0.12;
         f.alpha -= f.decay;
 
         if (f.alpha <= 0) {
