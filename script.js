@@ -1,98 +1,126 @@
-/* ═══════════════════════════════════════════════════════
-   ISHTAMCHAT — COMING SOON PAGE
-   Interactive canvas particles + typewriter effect
-   Pure vanilla JS — zero dependencies
-   ═══════════════════════════════════════════════════════ */
+/**
+ * ISHTAMCHAT — COMING SOON PAGE
+ * Interactive Google Stitch inspired behaviors:
+ * 1. Gentle ambient stardust canvas
+ * 2. Elegant typewriter tagline rotator
+ * 3. Form validation, submission & smooth state switching
+ * 4. Subtle 3D card tilt & tactile physics
+ */
 
 (function () {
   "use strict";
 
-  /* ─── Typewriter ────────────────────────────────────── */
-  const taglines = [
-    "Where hearts find their home\u2026",
-    "Meaningful connections, thoughtfully made.",
-    "Your story of love begins here.",
-    "Discover someone who truly understands you.",
+  /* ─── 1. Tagline Rotator (Typewriter) ────────────────────────── */
+  var taglines = [
+    "Where hearts find their true home…",
+    "Meaningful compatibility, thoughtfully curated.",
+    "Conversations that lead to forever.",
+    "Privacy-first discovery for modern relationships."
   ];
 
-  const typewriterEl = document.getElementById("typewriter-text");
-  let taglineIdx = 0;
-  let charIdx = 0;
-  let isDeleting = false;
+  var typewriterEl = document.getElementById("typewriter-text");
+  var taglineIndex = 0;
+  var charIndex = 0;
+  var isDeleting = false;
+  var typingSpeed = 55;
 
-  function typeStep() {
-    const current = taglines[taglineIdx];
+  function typeLoop() {
+    var currentText = taglines[taglineIndex];
 
     if (!isDeleting) {
-      charIdx++;
-      typewriterEl.textContent = current.slice(0, charIdx);
-      if (charIdx >= current.length) {
-        // Pause before deleting
+      charIndex++;
+      typewriterEl.textContent = currentText.substring(0, charIndex);
+
+      if (charIndex >= currentText.length) {
+        // Pause when full phrase typed
         setTimeout(function () {
           isDeleting = true;
-          typeStep();
-        }, 2400);
+          typeLoop();
+        }, 2600);
         return;
       }
-      setTimeout(typeStep, 60 + Math.random() * 45);
+      setTimeout(typeLoop, typingSpeed + (Math.random() * 25));
     } else {
-      charIdx--;
-      typewriterEl.textContent = current.slice(0, charIdx);
-      if (charIdx <= 0) {
+      charIndex--;
+      typewriterEl.textContent = currentText.substring(0, charIndex);
+
+      if (charIndex <= 0) {
         isDeleting = false;
-        taglineIdx = (taglineIdx + 1) % taglines.length;
-        setTimeout(typeStep, 350);
+        taglineIndex = (taglineIndex + 1) % taglines.length;
+        setTimeout(typeLoop, 400);
         return;
       }
-      setTimeout(typeStep, 28);
+      setTimeout(typeLoop, 25);
     }
   }
 
-  // Start after entry animation
-  setTimeout(typeStep, 800);
+  // Initial delay before typing starts
+  setTimeout(typeLoop, 1000);
 
-  /* ─── Email signup form ─────────────────────────────── */
-  var form = document.getElementById("signup-form");
+  /* ─── 2. Email Signup Handling ───────────────────────────────── */
+  var form = document.getElementById("waitlist-form");
   var emailInput = document.getElementById("email-input");
   var errorEl = document.getElementById("email-error");
-  var successEl = document.getElementById("signup-success");
+  var successCard = document.getElementById("signup-success");
   var confirmedEmailEl = document.getElementById("confirmed-email");
+  var resetBtn = document.getElementById("reset-btn");
+  var submitBtn = document.getElementById("submit-btn");
 
-  // Simple email regex — intentionally permissive
-  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Email regex (standard RFC 5322 compatible check)
+  var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    errorEl.hidden = true;
-    errorEl.textContent = "";
+    hideError();
 
-    var value = emailInput.value.trim();
+    var emailValue = emailInput.value.trim();
 
-    if (!value) {
-      showError("Please enter your email address.");
-      return;
-    }
-    if (!EMAIL_RE.test(value)) {
-      showError("Please enter a valid email address.");
+    if (!emailValue) {
+      showError("Please enter your email address to continue.");
+      emailInput.focus();
       return;
     }
 
-    // In production, POST to your backend here.
-    // Example:
-    // fetch('/api/early-access', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ email: value })
-    // });
+    if (!EMAIL_REGEX.test(emailValue)) {
+      showError("Please enter a valid email address (e.g., name@example.com).");
+      emailInput.focus();
+      return;
+    }
 
-    confirmedEmailEl.textContent = value;
-    form.hidden = true;
-    successEl.hidden = false;
+    // Button loading feedback
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.75";
+    var originalBtnText = submitBtn.querySelector(".btn-text").textContent;
+    submitBtn.querySelector(".btn-text").textContent = "Reserving...";
+
+    // Simulated quick async confirmation (backend hook point)
+    setTimeout(function () {
+      confirmedEmailEl.textContent = emailValue;
+      form.hidden = true;
+      successCard.hidden = false;
+
+      // Restore button
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "1";
+      submitBtn.querySelector(".btn-text").textContent = originalBtnText;
+
+      // Gentle celebratory micro-particle burst
+      burstConfetti();
+    }, 450);
   });
 
   emailInput.addEventListener("input", function () {
-    errorEl.hidden = true;
-    errorEl.textContent = "";
+    if (!errorEl.hidden) {
+      hideError();
+    }
+  });
+
+  resetBtn.addEventListener("click", function () {
+    successCard.hidden = true;
+    form.hidden = false;
+    emailInput.value = "";
+    hideError();
+    emailInput.focus();
   });
 
   function showError(msg) {
@@ -100,121 +128,160 @@
     errorEl.hidden = false;
   }
 
-  /* ─── Heart particle canvas ─────────────────────────── */
-  var canvas = document.getElementById("heart-canvas");
-  var ctx = canvas.getContext("2d");
-  var particles = [];
-  var mouse = { x: -1, y: -1 };
-
-  var COLORS = [
-    "rgba(122, 24, 53, 0.35)",
-    "rgba(199, 122, 139, 0.30)",
-    "rgba(216, 178, 140, 0.25)",
-    "rgba(167, 88, 106, 0.28)",
-    "rgba(92, 16, 39, 0.20)",
-    "rgba(248, 200, 210, 0.22)",
-  ];
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initParticles();
+  function hideError() {
+    errorEl.hidden = true;
+    errorEl.textContent = "";
   }
 
-  function initParticles() {
-    var count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 80);
-    particles = [];
-    for (var i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.3 - 0.1,
-        size: Math.random() * 14 + 6,
-        alpha: Math.random() * 0.4 + 0.1,
-        aDir: Math.random() > 0.5 ? 1 : -1,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        rot: Math.random() * Math.PI * 2,
-        rotV: (Math.random() - 0.5) * 0.02,
-      });
+  /* ─── 3. Subtle 3D Card Tilt Effect on Hover (Desktop) ────────── */
+  var card = document.getElementById("main-card");
+  var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (card && !isTouchDevice && window.innerWidth > 992) {
+    document.addEventListener("mousemove", function (e) {
+      var rect = card.getBoundingClientRect();
+      var cardX = rect.left + rect.width / 2;
+      var cardY = rect.top + rect.height / 2;
+
+      var deltaX = (e.clientX - cardX) / (window.innerWidth / 2);
+      var deltaY = (e.clientY - cardY) / (window.innerHeight / 2);
+
+      var rotateX = deltaY * -3.5;
+      var rotateY = deltaX * 3.5;
+
+      card.style.transform = "perspective(1200px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg)";
+    });
+
+    document.addEventListener("mouseleave", function () {
+      card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg)";
+    });
+  }
+
+  /* ─── 4. Ambient Stardust Canvas (Subtle Floating Embers) ──────── */
+  var canvas = document.getElementById("ambient-canvas");
+  if (canvas) {
+    var ctx = canvas.getContext("2d");
+    var stars = [];
+    var maxStars = 45;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars();
     }
-  }
 
-  function drawHeart(x, y, size) {
-    ctx.beginPath();
-    var top = size * 0.3;
-    ctx.moveTo(x, y + top);
-    ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + top);
-    ctx.bezierCurveTo(x - size / 2, y + (size + top) / 2, x, y + (size + top) / 1.5, x, y + size);
-    ctx.bezierCurveTo(x, y + (size + top) / 1.5, x + size / 2, y + (size + top) / 2, x + size / 2, y + top);
-    ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + top);
-    ctx.closePath();
-  }
+    function initStars() {
+      stars = [];
+      var count = Math.min(Math.floor((canvas.width * canvas.height) / 28000), maxStars);
+      for (var i = 0; i < count; i++) {
+        stars.push(createStar(true));
+      }
+    }
 
-  function animate() {
-    var w = canvas.width;
-    var h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
+    function createStar(randomY) {
+      return {
+        x: Math.random() * canvas.width,
+        y: randomY ? Math.random() * canvas.height : canvas.height + 10,
+        radius: Math.random() * 2.2 + 0.8,
+        color: Math.random() > 0.45 ? "rgba(197, 155, 114, " : "rgba(184, 93, 115, ",
+        alpha: Math.random() * 0.45 + 0.15,
+        speedY: Math.random() * 0.35 + 0.15,
+        speedX: (Math.random() - 0.5) * 0.25,
+        fadeSpeed: (Math.random() * 0.004) + 0.002,
+        fadeIn: Math.random() > 0.5
+      };
+    }
 
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Mouse interaction — gentle push away
-      if (mouse.x >= 0) {
-        var dx = p.x - mouse.x;
-        var dy = p.y - mouse.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 160) {
-          var force = ((160 - dist) / 160) * 0.6;
-          p.vx += (dx / dist) * force * 0.3;
-          p.vy += (dy / dist) * force * 0.3;
+      for (var i = 0; i < stars.length; i++) {
+        var s = stars[i];
+
+        // Alpha twinkle
+        if (s.fadeIn) {
+          s.alpha += s.fadeSpeed;
+          if (s.alpha >= 0.6) s.fadeIn = false;
+        } else {
+          s.alpha -= s.fadeSpeed;
+          if (s.alpha <= 0.05) s.fadeIn = true;
         }
+
+        s.y -= s.speedY;
+        s.x += s.speedX;
+
+        // Reset if drifted outside
+        if (s.y < -10 || s.x < -10 || s.x > canvas.width + 10) {
+          stars[i] = createStar(false);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = s.color + Math.max(0, Math.min(1, s.alpha)) + ")";
+        ctx.shadowColor = s.color + "0.6)";
+        ctx.shadowBlur = 6;
+        ctx.fill();
       }
 
-      p.x += p.vx;
-      p.y += p.vy;
-      p.rot += p.rotV;
-
-      // Breathing alpha
-      p.alpha += p.aDir * 0.003;
-      if (p.alpha > 0.5) { p.alpha = 0.5; p.aDir = -1; }
-      if (p.alpha < 0.05) { p.alpha = 0.05; p.aDir = 1; }
-
-      // Drag
-      p.vx *= 0.995;
-      p.vy *= 0.995;
-
-      // Wrap edges
-      if (p.x < -20) p.x = w + 20;
-      if (p.x > w + 20) p.x = -20;
-      if (p.y < -20) p.y = h + 20;
-      if (p.y > h + 20) p.y = -20;
-
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.rot);
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle = p.color;
-      drawHeart(0, -p.size / 2, p.size);
-      ctx.fill();
-      ctx.restore();
+      requestAnimationFrame(drawStars);
     }
 
-    requestAnimationFrame(animate);
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    requestAnimationFrame(drawStars);
   }
 
-  // Pointer tracking (works with mouse and touch)
-  window.addEventListener("pointermove", function (e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
+  /* ─── 5. Micro Confetti Burst on Signup ───────────────────────── */
+  function burstConfetti() {
+    if (!canvas || !ctx) return;
+    var burstCount = 28;
+    var burstParticles = [];
+    var cx = canvas.width / 2;
+    var cy = canvas.height / 2;
 
-  window.addEventListener("pointerleave", function () {
-    mouse.x = -1;
-    mouse.y = -1;
-  });
+    for (var i = 0; i < burstCount; i++) {
+      var angle = Math.random() * Math.PI * 2;
+      var velocity = Math.random() * 5 + 2;
+      burstParticles.push({
+        x: cx,
+        y: cy,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity,
+        size: Math.random() * 4 + 2,
+        color: i % 2 === 0 ? "rgba(197, 155, 114," : "rgba(107, 17, 43,",
+        alpha: 1,
+        decay: Math.random() * 0.02 + 0.015
+      });
+    }
 
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
-  requestAnimationFrame(animate);
+    function animateBurst() {
+      if (burstParticles.length === 0) return;
+
+      for (var j = burstParticles.length - 1; j >= 0; j--) {
+        var p = burstParticles[j];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.08; // gravity
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0) {
+          burstParticles.splice(j, 1);
+          continue;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + p.alpha + ")";
+        ctx.fill();
+      }
+
+      if (burstParticles.length > 0) {
+        requestAnimationFrame(animateBurst);
+      }
+    }
+
+    requestAnimationFrame(animateBurst);
+  }
+
 })();

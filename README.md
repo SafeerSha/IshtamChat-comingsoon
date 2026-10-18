@@ -1,54 +1,51 @@
 # IshtamChat — Coming Soon Page
 
-A premium, interactive "Coming Soon" landing page for IshtamChat.
+A simple, attractive, and beautiful "Coming Soon" landing page for **IshtamChat**, redesigned with **Google Stitch & Material 3 Expressive** design principles.
 
-## Features
+## ✨ Design & Features
 
-- 🎨 **Animated gradient background** with floating glow orbs
-- 💕 **Interactive heart particles** that react to mouse movement (canvas-based)
-- ✍️ **Typewriter tagline** cycling through romantic phrases
-- 📧 **Email signup form** with client-side validation (backend-ready)
-- 📱 **Fully responsive** — looks great on mobile, tablet, and desktop
-- ♿ **Accessible** — ARIA labels, reduced-motion support, semantic HTML
-- ⚡ **Zero dependencies** — pure HTML, CSS, and vanilla JavaScript
+- **Google Stitch Elevated Architecture**: Clean, floating frosted glass/ceramic card container (`backdrop-filter: blur(28px)`) with subtle 3D hover physics.
+- **Warm Ambient Fluid Lighting**: Multi-layered organic radial mesh in deep royal burgundy, warm champagne gold, and soft blush rose.
+- **Stitch Unified Pill Form**: Seamless email capsule input with an embedded icon, sleek typography, and a glowing CTA button.
+- **Delicate Ambient Stardust**: Non-distracting, golden and rose floating stardust canvas that gently drifts and twinkles.
+- **Typewriter Rotator**: Smooth cycling between curated brand taglines.
+- **Stitch Feature Chips**: Three pill badges highlighting key value propositions:
+  - 🛡️ 100% Verified Profiles
+  - 💫 Deep Compatibility
+  - 🔒 Privacy By Design
+- **Polished State Transitions**: Clean error handling with shake animation, smooth VIP invitation confirmation card with confetti micro-burst, and "Add another email" reset.
+- **Zero Dependencies**: Pure HTML5, Vanilla CSS, and lightweight JavaScript. No frameworks or heavy libraries needed.
 
-## Getting Started
+## 🚀 How to Run Locally
 
-Just open `index.html` in a browser. No build step, no node_modules, nothing to install.
+You can open `index.html` directly in any web browser, or serve it with any static server:
 
 ```bash
-# Or serve it locally:
-npx -y serve .
+# Serve locally on port 4000:
+npx -y serve -p 4000 .
 ```
 
-## Connecting the Email Backend
+Then visit: [http://localhost:4000](http://localhost:4000)
 
-In `script.js`, find the `form.addEventListener("submit", ...)` handler.  
-Uncomment and update the `fetch(...)` call to POST to your backend API:
+## 🔌 Connecting Email Collection to Backend
 
-```js
-fetch('/api/early-access', {
+In `script.js`, find the submit handler inside `form.addEventListener("submit", ...)`:
+
+```javascript
+// Replace the setTimeout with your backend endpoint:
+fetch('https://api.ishtamchat.com/v1/waitlist', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: value })
+  body: JSON.stringify({ email: emailValue })
 });
 ```
 
-## Deployment
-
-This is a static site — deploy anywhere:
-
-- **Vercel**: `npx -y vercel --prod`
-- **Netlify**: Drag & drop the folder
-- **GitHub Pages**: Push and enable Pages in repo settings
-- **Any web server**: Just serve the 3 files
-
-## File Structure
+## 📦 Project Structure
 
 ```
 ishtamchat-coming-soon/
-├── index.html    ← Main HTML page
-├── styles.css    ← All styles + animations + responsive
-├── script.js     ← Typewriter + particles + form logic
-└── README.md
+├── index.html    # Semantic, accessible HTML with SEO meta tags
+├── styles.css    # Google Stitch design tokens, fluid lighting & animations
+├── script.js     # Stardust canvas, typewriter, 3D tilt & form logic
+└── README.md     # Documentation
 ```
